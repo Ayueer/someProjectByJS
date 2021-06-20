@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+        div{ width:300px; }
+        ul,li{ list-style:none; }
+        ul{ padding:5px; }
+        li{
+            cursor:pointer;
+            margin-bottom:5px;
+            padding:2px 7px 2px 25px;
+            line-height:20px;
+            border-radius: 3px;                 /* 圆角 */
+            -moz-border-radius: 3px;            /* mozilla模式     */
+            -webkit-border-radius: 3px;         /*chrome模式下  */
+        }
+        li:hover{ background-color:#e3e3e3; }   /* 触碰后的背景颜色   */
+        .list{                                  /*  播放列表样式 */
+            height:150px;
+            font-size:15px;
+            border: 1px solid #464646;
+            border-radius: 3px;                 /*  */
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            background-color: #F5F6F9;
+            margin-bottom:10px;
+        }
+        .run{                                   /* 当前正在播放  */
+            background-color:pink !important;  /*！important提高css优先权  */
+        }
+        .box{                                   /*播放器外观 */
+            border: 1px solid #464646;
+            border-radius: 3px;                 /*  圆角*/
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            padding: 20px;
+            /* 背景色线性渐变 */
+            background:-moz-linear-gradient(top,rgb(255, 111, 143),#f6f6f8); /*第一个参数为从上到下，二三两个分别为起始和终止的颜色*/
+            background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 111, 143)), to(#f6f6f8));/*百分号里表渐进起点和终点*/
+        }
+    </style>
+</head>
+<body>
+<header><h2></h2></header>
+<div class="box">
+    <div class="list">
+        <!--  -->
+        <ul>
+            <li class="run">LoveYourSelf.mp3</li>
+            <li>JUST.mp3</li>
+        </ul>
+    </div>
+    <div>
+        <!-- 播放器 -->
+        <audio src="html05/Make%20You%20Feel%20My%20Love.mp3" controls>
+        </audio>
+    </div>
+</div>
+</body>
+<script>
+    var slice = Array.prototype.slice,
+        audio = document.querySelector('audio'),            //音频播放元素
+        //    将获取的播放音频元素转化为数组
+        items = slice.call(document.querySelectorAll('.list li'),0),
+        run;
+    items.forEach(function (item) {
+        item.addEventListener('click', function () {        // 监听元素的click事件
+            run = document.querySelector('li.run');         // 获取当前的播放元素
+            run.className = '';                              //取消当前的播放元素
+            item.className = 'run';                         // 给当前单击的音频加入正在播放的样式
+            // 替换audio的地址为当前单击音频地址
+            audio.src = audio.src.replace(run.innerHTML, item.innerHTML);
+        });
+    });
+</script>
+</html>
