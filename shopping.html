@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>手风琴</title>
+    <style type="text/css">
+        div{
+            width: 1300px;
+            height: 300px;
+            margin: 40px auto;
+            overflow: hidden;
+            background-image: linear-gradient(to right,hotpink,darkorange);
+        }
+        h1{
+            text-align: center;
+        }
+        ul{
+            padding: 0;
+            margin: 0;
+        }
+        ul li{
+            width: 126px;
+            list-style: none;
+            float: left;
+            transition: width 2s;
+        }
+        ul li:hover{
+            width: 670px;
+        }
+    </style>
+</head>
+<body>
+<h1>欢迎来到拼夕夕购物狂欢夜！</h1>
+<div>
+    <ul>
+        <li> <img src="images/img/ad1.jpg"></li>
+        <li><img src="images/img/ad2.jpg"></li>
+        <li><img src="images/img/ad3.jpg"></li>
+        <li><img src="images/img/ad4.jpg"></li>
+        <li><img src="images/img/ad5.jpg"></li>
+        <li><img src="images/img/ad6.jpg"></li>
+    </ul>
+</div>
+<div style="height: 100px;width: 660px ;background-color: hotpink;border-radius: 10px ">
+    <span id="times" style="font-size: 30px;padding-left: 200px;" >
+<script  type="text/javascript">
+function _fresh()
+{
+    var endtime=new Date("2021/11/11,00:00:00");
+    var nowtime = new Date();
+    var leftsecond=parseInt((endtime.getTime()-nowtime.getTime())/1000);
+    __d=parseInt(leftsecond/3600/24);
+    __h=parseInt((leftsecond/3600)%24);
+    __m=parseInt((leftsecond/60)%60);
+    __s=parseInt(leftsecond%60);
+    var c=new Date();
+    var q=((c.getMilliseconds())%10);
+    document.getElementById("times").innerHTML=__d+"天 "+__h+"小时"+__m+"分"+__s+"."+q+"秒";
+    if(leftsecond<=0){
+        document.getElementById("times").innerHTML="抢购已结束";
+        clearInterval(sh);
+    }
+}
+_fresh()
+var sh;
+sh=setInterval(_fresh,100);
+</script>
+</span>
+
+</div>
+
+</body>
+</html>
