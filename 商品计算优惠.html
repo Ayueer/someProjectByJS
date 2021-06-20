@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>优惠</title>
+    <script>
+       function btn() {
+           const price=document.getElementById("price").value;
+           const way=document.getElementById("op");
+           //const realprice=document.getElementById("real-price");
+           const num=document.getElementById("num").value;
+           const choice=way.selectedIndex;
+           //alert(way[choice].value+'-'+way[choice].innerHTML);
+           switch (way[choice].value){
+               case "1":{
+                   alert("您享受了5折优惠");
+                   document.getElementById("real-price").value=Number(0.5*price*num);
+                   break;
+               }
+
+               case "2":{
+                   alert("您享受了8折优惠");
+                   document.getElementById("real-price").value=Number(0.8*price*num);
+                   break;
+               }
+
+               case "3":{
+                   alert("您享受了9折优惠");
+                   document.getElementById("real-price").value=Number(0.9*price*num);
+                   break;
+               }
+
+               case "4":{
+                   alert("您享受了6折优惠");
+                   document.getElementById("real-price").value=Number(0.6*price*num);
+                   break;
+               }
+
+           }
+       }
+    </script>
+</head>
+<body>
+<div>
+    <form action="" method="get">
+        <img src="image/logo.gif"><br>
+        <img src="image/qie.jpg"><br>
+        竞拍价格：<input type="number" id="price"><br>
+        购买数量：<input type="number" id="num"><br>
+        支付方式：
+        <select id="op">
+            <option value="1">银行转账</option>
+            <option value="2">电话支付</option>
+            <option value="3">邮政汇款</option>
+            <option value="4">Q币支付</option>
+        </select><br>
+        预计总价：<input type="number" id="real-price"><br>
+        <input type="button" value="计算看看" onclick="btn()">
+    </form>
+</div>
+
+</body>
+</html>
